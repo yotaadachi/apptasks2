@@ -1,11 +1,12 @@
-<div class="row">
+<div class="container">
+  <div class="row">
 	<div class="col-xs-3">
 
 		<h2>User info</h2>
 		<%= render 'users/profile', user: current_user %>
 
 		<h2>New book</h2>
-		<%= render 'books/newform', book: @book %>
+		<%= render 'books/newform', book: @book_new %>
 
 	</div>
 
@@ -30,7 +31,10 @@
 							<%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
 						<% end %>
 					</td>
-					<td><%= link_to book.title, book_path(book), class: "book_#{book.id}" %></td>
+					<td><%= link_to book_path(book) do %>
+						  <%= book.title %>
+						<% end %>
+					</td>
 					<td><%= book.body %></td>
 				</tr>
 				<% end %>
@@ -41,4 +45,5 @@
 
 
 	</div>
+  </div>
 </div>
